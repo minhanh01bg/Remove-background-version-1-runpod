@@ -1,0 +1,14 @@
+.git
+test.json
+test.py
+rm_cache.sh
+test.py
+__pycache__
+inference.py
+app/
+# Ignore unnecessary files
+*.log
+*.md
+tests/
+.env
+__pycache__/
