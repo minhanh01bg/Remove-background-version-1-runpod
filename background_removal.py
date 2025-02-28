@@ -32,5 +32,11 @@ def extract_object(birefnet, imagepath):
     pred = preds[0].squeeze()
     pred_pil = transforms.ToPILImage()(pred)
     mask = pred_pil.resize(image.size)
+
     image.putalpha(mask)
     return image, mask
+ 
+# image, mask = extract_object(
+#     birefnet=birefnet,
+#     imagepath="/home/minhthuy/Pictures/Zelensky-2406-1725415582.png"
+# )

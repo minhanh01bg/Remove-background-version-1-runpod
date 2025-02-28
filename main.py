@@ -37,11 +37,11 @@ def main(job):
         exif = result.info.get("exif")
         result = ImageOps.exif_transpose(result)
     result.save(buffered_image, format="WebP", lossless=True)
-    # mask.convert("RGB").save(buffered_mask, format="PNG")
+    mask.convert("RGB").save(buffered_mask, format="PNG")
     
     # Encode
     image_base64 = base64.b64encode(buffered_image.getvalue()).decode('utf-8')
-    # mask_base64 = base64.b64encode(buffered_mask.getvalue()).decode('utf-8')
+    mask_base64 = base64.b64encode(buffered_mask.getvalue()).decode('utf-8')
 
     # test
     base64_length = len(image_base64) 
@@ -53,9 +53,9 @@ def main(job):
     print(f"Image size: {original_size_mb:.2f} MB")
 
     return {
-        "image": base64.b64encode(image_data).decode('utf-8'),
+        # "mask": base64.b64encode(mask).decode('utf-8'),
         "result_base64":image_base64,
-        # "mask_base64":mask_base64,
+        "mask_base64":mask_base64,
         "message":"Image processed successfully"
     }
 
